@@ -25,6 +25,45 @@ async function getAllBerita(page=1) {
 
 }
 
+async function getSingleBerita(id) {
+    const data = await db.query(
+        `SELECT * FROM Berta WHERE id=${id}`
+    )
+    const result = helper.isEmpty(data)
+
+
+    if (data.length) {
+        return {
+            ...helper.requestSuccess('Success get single berita', false, result)
+        }
+    } else {
+        return {
+            ...helper.requestFail('Fail to get single berita')
+        }
+    }
+}
+
+async function createmessage(data) {
+    const result = await db.query(
+        `INSERT INTO feed (nama, email, subjek, pesan) VALUES ('${data.nama}','${data.email}','${data.subjek}','${data.pesan}')`
+    )
+
+    let message = 'Error in adding game'
+
+    if (result.affectedRows) {
+        message = 'Success in adding game'
+        return {
+            ...helper.requestSuccess(message, true)
+        }
+    } else {
+        return {
+            ...helper.requestFail('Fail to add game')
+        }
+    }
+}
+
 module.exports = {
-    getAllBerita
+    getAllBerita,
+    getSingleBerita,
+    createmessage
 }
