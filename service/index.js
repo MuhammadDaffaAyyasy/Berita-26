@@ -6,7 +6,7 @@ const { listPerPage } = require('../config')
 async function getAllBerita(page=1) {
     const offset = helper.getOffset(page, config.listPerPage)
     const data = await db.query(
-        `SELECT * FROM Berta ${offset}, ${config.listPerPage}`
+        `SELECT * FROM Berta LIMIT${offset}, ${config.listPerPage}`
     )
     const result = helper.isEmpty(data)
     const meta = {
