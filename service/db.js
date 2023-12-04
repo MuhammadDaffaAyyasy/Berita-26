@@ -7,4 +7,6 @@ async function query(sql, params) {
     return result
 }
 
-module.exports = query
+module.exports = {
+    query
+}
