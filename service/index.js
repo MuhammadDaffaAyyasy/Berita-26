@@ -34,7 +34,7 @@ async function getSingleBerita(id) {
 
     if (data.length) {
         return {
-            ...helper.requestSuccess('Success get single berita', false, result)
+            ...helper.requestSucces('Success get single berita', false, result)
         }
     } else {
         return {
@@ -53,7 +53,7 @@ async function createmessage(data) {
     if (result.affectedRows) {
         message = 'Success in adding berita'
         return {
-            ...helper.requestSuccess(message, true)
+            ...helper.requestSucces(message, true)
         }
     } else {
         return {
