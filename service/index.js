@@ -48,16 +48,16 @@ async function createmessage(data) {
         `INSERT INTO feed (nama, email, subjek, pesan) VALUES ('${data.nama}','${data.email}','${data.subjek}','${data.pesan}')`
     )
 
-    let message = 'Error in adding game'
+    let message = 'Error in adding berita'
 
     if (result.affectedRows) {
-        message = 'Success in adding game'
+        message = 'Success in adding berita'
         return {
             ...helper.requestSuccess(message, true)
         }
     } else {
         return {
-            ...helper.requestFail('Fail to add game')
+            ...helper.requestFail('Fail to add berita')
         }
     }
 }
